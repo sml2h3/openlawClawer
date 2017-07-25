@@ -1,0 +1,6 @@
+requests
+lxml
+redis
+gevent
+pymysql
+sqlalchemy

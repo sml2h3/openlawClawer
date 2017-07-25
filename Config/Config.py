@@ -11,8 +11,8 @@ Base = {
 }
 
 Redis = {
-    'host': '',
-    'password': '',
+    'host': 'r-2ze7441de5149074.redis.rds.aliyuncs.com',
+    'password': 'CSDNb405',
     'port': 6379, #默认端口
     'database': 0 #默认数据库
 }

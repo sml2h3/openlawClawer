@@ -4,6 +4,8 @@
 # @Site    : www.ydyd.me
 # @File    : Clawer.py
 # @Software: PyCharm
+import sys
+sys.setrecursionlimit(110000)
 import requests
 import time
 from Logger.Logger import Logger
@@ -13,7 +15,8 @@ monkey.patch_socket()
 from lxml import etree
 import gevent
 from gevent.pool import Pool
-from Config.DB import *
+import pymysql
+# from Config.DB import *
 Logger = Logger('Clawer')
 
 
@@ -73,6 +76,7 @@ class Clawer(object):
         }
         result = requests.get(url, cookies=self.cookies, headers=header)
         if result and result.status_code == 200:
+
             html = etree.HTML(result.text)
             #判决时间
             time_tem = html.xpath('//*[@id="ht-kb"]/article/header/ul/li[1]/text()')
@@ -86,6 +90,9 @@ class Clawer(object):
                 title = title_tem[0]
             else:
                 title = ""
+            if title == "":
+                self.clawer_slaver(url)
+                return
             Logger.info(title)
             #判决法院
             fy_tem = html.xpath('//*[@id="ht-kb"]/article/header/ul/li[2]/a/text()')
@@ -140,14 +147,21 @@ class Clawer(object):
             for t in content:
                 c += t
             end = c
-            session = DBSession()
-            # 创建新User对象:
-            new_user = Law(title=title, litigants=litigants, explain=explain, procedure=procedure, opinion=option, verdict=verdict, inform=info, ending=end, time=time, fy=fy, an=ah)
-            # 添加到session:
-            session.add(new_user)
-            # 提交即保存到数据库:
-            session.commit()
-            session.close()
+
+            conn = pymysql.connect(host='r-2ze7441de5149074.redis.rds.aliyuncs.com', port=3306, user='root', passwd='CSDNb405', db='openlaw', charset='utf8')
+            cursor = conn.cursor()
+            result = cursor.excute('insert into law(title, litigants, explain, procedure, opinion, verdict, inform, ending, time, fy, an) vaules(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',(title, litigants,explain,procedure,option,verdict,info,end,time,fy,ah))
+            conn.commit()
+            cursor.close()
+            conn.close()
+            # session = DBSession()
+            # # 创建新User对象:
+            # new_user = Law(title=title, litigants=litigants, explain=explain, procedure=procedure, opinion=option, verdict=verdict, inform=info, ending=end, time=time, fy=fy, an=ah)
+            # # 添加到session:
+            # session.add(new_user)
+            # # 提交即保存到数据库:
+            # session.commit()
+            # session.close()
             # 关闭session:
             Logger.info("任务:"+ url + "完成")
 

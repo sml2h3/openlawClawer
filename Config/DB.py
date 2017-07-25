@@ -32,7 +32,7 @@ class Law(Base):
     an = Column(VARCHAR(255))
 
 # 初始化数据库连接:
-engine = create_engine('mysql+pymysql://root:password@host/openlaw?charset=utf8')
+engine = create_engine('mysql+pymysql://root:CSDNb405@r-2ze7441de5149074.redis.rds.aliyuncs.com/openlaw?charset=utf8')
 # 创建DBSession类型:
 DBSession = sessionmaker(bind=engine)
 
