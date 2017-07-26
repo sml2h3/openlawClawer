@@ -15,8 +15,8 @@ monkey.patch_socket()
 from lxml import etree
 import gevent
 from gevent.pool import Pool
-import pymysql
-# from Config.DB import *
+# import pymysql
+from Config.DB import *
 Logger = Logger('Clawer')
 
 
@@ -147,21 +147,21 @@ class Clawer(object):
             for t in content:
                 c += t
             end = c
-
-            conn = pymysql.connect(host='r-2ze7441de5149074.redis.rds.aliyuncs.com', port=3306, user='root', passwd='CSDNb405', db='openlaw', charset='utf8')
-            cursor = conn.cursor()
-            result = cursor.excute('insert into law(title, litigants, explain, procedure, opinion, verdict, inform, ending, time, fy, an) vaules(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',(title, litigants,explain,procedure,option,verdict,info,end,time,fy,ah))
-            conn.commit()
-            cursor.close()
-            conn.close()
-            # session = DBSession()
-            # # 创建新User对象:
-            # new_user = Law(title=title, litigants=litigants, explain=explain, procedure=procedure, opinion=option, verdict=verdict, inform=info, ending=end, time=time, fy=fy, an=ah)
-            # # 添加到session:
-            # session.add(new_user)
-            # # 提交即保存到数据库:
-            # session.commit()
-            # session.close()
+            Logger.info(title)
+            # conn = pymysql.connect(host='rm-2ze7441de5149074.redis.rds.aliyuncs.com', port=3306, user='root', passwd='CSDNb405', db='openlaw', charset='utf8')
+            # cursor = conn.cursor()
+            # result = cursor.execute('insert into law(title, litigants, explain, procedure, opinion, verdict, inform, ending, time, fy, an) vaules(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',(str(title), str(litigants), str(explain), str(procedure), str(option), str(verdict), str(info), str(end), str(time), str(fy), str(ah)))
+            # conn.commit()
+            # cursor.close()
+            # conn.close()
+            session = DBSession()
+            # 创建新User对象:
+            new_user = Law(title=title, litigants=litigants, explain=explain, procedure=procedure, opinion=option, verdict=verdict, inform=info, ending=end, time=time, fy=fy, an=ah)
+            # 添加到session:
+            session.add(new_user)
+            # 提交即保存到数据库:
+            session.commit()
+            session.close()
             # 关闭session:
             Logger.info("任务:"+ url + "完成")
 

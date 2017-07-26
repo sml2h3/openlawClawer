@@ -2,10 +2,10 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="1a04403a-cfd1-441f-86ca-f1df4b0404f6" name="123.56.246.102" url="http://123.56.246.102">
-        <fileTransfer host="123.56.246.102" port="21">
+      <webServer id="1a04403a-cfd1-441f-86ca-f1df4b0404f6" name="101.200.82.19" url="http://101.200.82.19">
+        <fileTransfer host="101.200.82.19" port="21">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" />
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
           </advancedOptions>
           <option name="port" value="21" />
         </fileTransfer>

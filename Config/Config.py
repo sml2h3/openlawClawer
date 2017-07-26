@@ -7,7 +7,7 @@
 
 Base = {
     'distributed': True, #是否开始分布式
-    'identity': 'master', #identity 身份:master主机slaver从机
+    'identity': 'slaver', #identity 身份:master主机slaver从机
 }
 
 Redis = {
