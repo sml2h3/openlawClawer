@@ -171,6 +171,26 @@ class Clawer(object):
             self.page += 1
             url = "http://openlaw.cn/search/judgement/type?causeId=a3ea79cf193f4e07a27a900e29585dbb&page="
             url += str(page)
+            # 代理服务器
+            proxyHost = "proxy.abuyun.com"
+            proxyPort = "9020"
+
+            # 代理隧道验证信息
+            proxyUser = "H4871716T867Q1LD"
+            proxyPass = "CCAE03DE2E35FBA2"
+
+            proxyMeta = "http://%(user)s:%(pass)s@%(host)s:%(port)s" % {
+                "host": proxyHost,
+                "port": proxyPort,
+                "user": proxyUser,
+                "pass": proxyPass,
+            }
+
+            proxy_handler = {
+                "http": proxyMeta,
+                "https": proxyMeta,
+            }
+
             header = {
                 'Host': 'openlaw.cn',
                 'Connection': 'keep-alive',
@@ -181,7 +201,7 @@ class Clawer(object):
                 'Accept-Language': 'zh-CN,zh;q=0.8,en;q=0.6',
             }
             Logger.info("正在抓取的页数为" + str(page))
-        result = requests.get(url, cookies=self.cookies, headers=header)
+        result = requests.get(url, cookies=self.cookies, headers=header, proxies=proxy_handler)
         if result and result.status_code == 200:
             if "抱歉不能为您显示更多的内容!" in result.text:
                 Logger.info("Cookies已经失效需要重新登录")

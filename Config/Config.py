@@ -7,12 +7,12 @@
 
 Base = {
     'distributed': True, #是否开始分布式
-    'identity': 'slaver', #identity 身份:master主机slaver从机
+    'identity': 'master', #identity 身份:master主机slaver从机
 }
 
 Redis = {
-    'host': 'r-2ze7441de5149074.redis.rds.aliyuncs.com',
-    'password': 'CSDNb405',
+    'host': 'localhost',
+    'password': '',
     'port': 6379, #默认端口
     'database': 0 #默认数据库
 }
