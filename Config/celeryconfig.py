@@ -29,5 +29,5 @@ broker_url = "redis://127.0.0.1"
 result_backend = "mongodb://127.0.0.1/celery"
 timezone = "Asia/Shanghai"
 imports = (
-    'Tasks.task1'
+    'Tasks.get_content'
 )

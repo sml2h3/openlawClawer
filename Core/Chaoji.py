@@ -5,12 +5,12 @@ import requests
 from hashlib import md5
 
 
-class Chaojiying_Client(object):
+class Chaoji():
 
-    def __init__(self, username, password, soft_id):
-        self.username = username
-        self.password = md5(password).hexdigest()
-        self.soft_id = soft_id
+    def __init__(self):
+        self.username = "sml2h3"
+        self.password = md5("WENanzhe123".encode("utf8")).hexdigest()
+        self.soft_id = "894117"
         self.base_params = {
             'user': self.username,
             'pass2': self.password,
