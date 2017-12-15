@@ -10,14 +10,10 @@
 
 @software: openlawClawer
 
-@file: account.py
+@file: system.py
 
-@time: 17-12-13 下午5:07
+@time: 17-12-16 上午4:43
 
-@desc: 账号
+@desc:
 
 '''
-
-account = [
-    ['username','password'],
-]
