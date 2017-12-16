@@ -10,8 +10,9 @@ def get(item):
     print("正在获取：%s\n" % item[0])
     # 代理服务器
     print("正在获取代理IP")
+    get_ip = "http://api.ip.data5u.com/dynamic/get.html?order={order}&sep=0"
     try:
-        ip_r = requests.get("http://api.ip.data5u.com/dynamic/get.html?order={order}&sep=0", headers={'Host': 'api.ip.data5u.com'})
+        ip_r = requests.get(get_ip, headers={'Host': 'api.ip.data5u.com'})
     except Exception as e:
         print("当前IP提取服务不可用，休息一秒后重试")
         Time.sleep(1)
