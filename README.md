@@ -43,6 +43,8 @@ git clone https://github.com/sml2h3/openlawClawer.git
  #### BROKER
  broker_url 为redis
  redis_url格式为
+ #### 账号 
+ 打开Account文件夹，按照[username,password]的数组格式添加openlaw的账号，多多益善，openlaw封禁账号很容易，越多越不容易被封，一般1-2天解封
 
 > redis://:password@hostname:port/db_number
 
