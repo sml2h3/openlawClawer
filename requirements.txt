@@ -2,3 +2,5 @@ lxml
 celery
 PyExecJS
 requests
+redis
+pymongo

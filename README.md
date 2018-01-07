@@ -58,6 +58,9 @@ mongodb_url格式为
 ``` python
 result_backend = "mongodb://127.0.0.1/celery"
 ```
+#### 验证码识别[超级鹰]
+注册、充值后新建软件，然后打开Core/Chaoji.py 进行配置username、password、soft_id
+
 #### 代理IP提取
 经过在开发中使用各家的产品结合openlaw网站爬取的特殊性，经过慎重考虑将采用[无忧代理][1]的爬虫代理IP产品（非广告），当然也可使用作者github中的[代理池工具][2]做提取。
 打开Tasks目录中的get_content文件，修改第13行get_ip变量，将{order}替换成你的订单号。（如果您不是使用无忧代理，还需额外修改第15行Host的值）
@@ -72,6 +75,10 @@ result_backend = "mongodb://127.0.0.1/celery"
 ``` shell
 python3 openlawClawer.py
 ```
+
+> 如果您是在vps云上运行的请先安装xvfb: `sudo apt-get install xvfb`
+> 然后使用如下命令启动: `xvfb-run python3 openlawClawer.py `
+> 否则可能会引起PhantomJs报错
 
  - 子端在项目根目录运行
 
@@ -94,6 +101,7 @@ celery worker -A app -l info -concurrency=5
 | --- | --- |
 |   李佳璐  |  -   |
 |   北京敬一科技有限公司  |   -  |
+|   清华大学数据研究院  |   -  |
 
   [1]: http://www.data5u.com/
   [2]: https://github.com/sml2h3/proxypool

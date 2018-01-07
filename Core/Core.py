@@ -33,6 +33,7 @@ class Core():
     def run(self):
         print("启动登录一个账号\r\n")
         user_cookies = Login().login()
+        print(user_cookies)
         print("登录成功，准备获取文书列表\r\n")
         list_temp = self.get_list(user_cookies)
 
@@ -68,6 +69,8 @@ class Core():
         page_r = requests.get(self.targetUrl + "&page=%s" % self.page, cookies=cookies)
         if page_r.status_code == 200:
             if 'window.v=' in page_r.text:
+                return 10001
+            if '抱歉' in page_r.text:
                 return 10001
             tree = etree.HTML(page_r.text)
             init_list = tree.xpath('//*[@id="ht-kb"]/article/h3/a')

@@ -8,9 +8,9 @@ from hashlib import md5
 class Chaoji():
 
     def __init__(self):
-        self.username = "sml2h3"
-        self.password = md5("WENanzhe123".encode("utf8")).hexdigest()
-        self.soft_id = "894117"
+        self.username = "username"
+        self.password = md5("password".encode("utf8")).hexdigest()
+        self.soft_id = "soft_id"
         self.base_params = {
             'user': self.username,
             'pass2': self.password,
