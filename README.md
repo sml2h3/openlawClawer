@@ -43,6 +43,8 @@ git clone https://github.com/sml2h3/openlawClawer.git
  #### BROKER
  broker_url 为redis
  redis_url格式为
+ #### 账号 
+ 打开Account文件夹，按照[username,password]的数组格式添加openlaw的账号，多多益善，openlaw封禁账号很容易，越多越不容易被封，一般1-2天解封
 
 > redis://:password@hostname:port/db_number
 
@@ -92,7 +94,7 @@ celery worker -A app -l info -concurrency=5
 
 ## 捐赠支持
 
-> 本项目无偿给大家使用，但没一个版本的维护都需要作者的精力才得以维持。如果本项目为您或者贵公司带来了很多方便，可以通过Star或捐赠的方式支持作者继续维护本项目。毕竟Openlaw网站最近更新的有点频繁，哈哈。感谢各位支持！捐赠后我会定期将捐赠者（捐赠大于30元）的名单发布在本README，您可以在备注中额外添加您的公司主页或者个人主页，将统一展示在下方。
+> 本项目无偿给大家使用，但每一个版本的维护都需要作者的精力才得以维持。如果本项目为您或者贵公司带来了很多方便，可以通过Star或捐赠的方式支持作者继续维护本项目。毕竟Openlaw网站最近更新的有点频繁，哈哈。感谢各位支持！捐赠后我会定期将捐赠者（捐赠大于30元）的名单发布在本README，您可以在备注中额外添加您的公司主页或者个人主页，将统一展示在下方。
 ![enter description here][3]![enter description here][4]
 
 > 本项目是经过测试后才提交，故如有技术问题可提交ISSUE或者考虑收费服务。如您需要有偿服务解决问题，可微信或支付宝扫码并在转账留言留下您的联系方式并标注需要解决问题，我会在下班后与您进行联系。
