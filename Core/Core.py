@@ -27,18 +27,18 @@ class Core():
 
     def __init__(self, causeId, account):
         self.causeId = causeId
-        self.page = 1
+        self.page = 1 #118
         self.targetUrl = "http://openlaw.cn/search/judgement/type?causeId=%s" % self.causeId
+        self.proxies= {}
 
     def run(self):
         print("启动登录一个账号\r\n")
-        user_cookies = Login().login()
-        print(user_cookies)
+        user_cookies, self.proxies = Login().run()
         print("登录成功，准备获取文书列表\r\n")
         list_temp = self.get_list(user_cookies)
 
         if list_temp == 10001:
-            #需要重新登录
+            # 需要重新登录
             print("系统检测到当前用户已经失效，即将重新登录\r\n")
             return self.run()
         else:
@@ -52,10 +52,17 @@ class Core():
                 list_temp = self.get_list(user_cookies)
                 if list_temp == 10001:
                     # 需要重新登录
-                    print("系统检测到当前用户已经失效，即将重新登录\r\n")
-                    return self.run()
+                    break
+                if list_temp == 10002:
                     break
             # 没有数据了
+            if list_temp == 10001:
+                # 需要重新登录
+                print("系统检测到当前用户已经失效，即将重新登录\r\n")
+                return self.run()
+            if list_temp == 10002:
+                print("链接超时，准备重新抓取本页")
+                return self.run()
             print("所有数据已经抓取完毕，准备退出")
             time.sleep(1)
             exit()
@@ -66,7 +73,15 @@ class Core():
 
     def get_list(self, cookies):
         print("正在抓取第%s页数据\r\n" % self.page)
-        page_r = requests.get(self.targetUrl + "&page=%s" % self.page, cookies=cookies)
+        try:
+
+            page_r = requests.get(self.targetUrl + "&page=%s" % self.page, cookies=cookies, proxies=self.proxies, timeout=8)
+        except requests.exceptions.ConnectTimeout:
+            return 10002
+        except requests.exceptions.ConnectionError:
+            return 10002
+        except requests.exceptions.ReadTimeout:
+            return 10002
         if page_r.status_code == 200:
             if 'window.v=' in page_r.text:
                 return 10001
@@ -84,4 +99,4 @@ class Core():
         else:
             print("网络连接异常，5秒后进行重连\r\n")
             time.sleep(5)
-            return self.get_list()
+            return self.get_list(cookies)

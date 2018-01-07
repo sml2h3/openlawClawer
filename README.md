@@ -103,7 +103,7 @@ celery worker -A app -l info -concurrency=5
 | --- | --- |
 |   李佳璐  |  -   |
 |   北京敬一科技有限公司  |   -  |
-|   清华大学数据研究院  |   -  |
+|   路人甲(捐助者希望匿名)  |   -  |
 
   [1]: http://www.data5u.com/
   [2]: https://github.com/sml2h3/proxypool
