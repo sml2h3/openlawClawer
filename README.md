@@ -1,5 +1,6 @@
 # openlawClawer V1.1 使用手册文档
-[![Github All Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/sml2h3/openlawClawer)  [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://github.com/sml2h3/openlawClawer)
+# 通知：即将全面更新系统，将新增自动注册账号、接入自有验证码识别系统(价格超低，超稳定)等全新功能，全面优化系统稳定性，爬虫学习爱好者可加QQ群：119794042
+[![Github All Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/sml2h3/openlawClawer)  :[![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://github.com/sml2h3/openlawClawer)
 ## 环境条件
 使用环境  | 版本要求
 ------------- | -------------
